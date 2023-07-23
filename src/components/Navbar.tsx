@@ -1,10 +1,19 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { BiCameraMovie, BiSearchAlt2 } from "react-icons/bi";
 
 export default function Navbar() {
     const [search, setSearch] = useState("");
-    
+    const navigate = useNavigate();
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (!search) return;
+
+        navigate(`/search?q=${search}`);
+        setSearch("");
+    }
+
     return (
         <nav className='py-4 px-3 bg-black flex flex-row justify-between'>
             <h2>
@@ -13,7 +22,7 @@ export default function Navbar() {
                     <p className='text-2xl font-bold text-purple-600'>Tv Show Lib</p>
                 </Link>
             </h2>
-            <form className="flex items-center">
+            <form className="flex items-center" onSubmit={handleSubmit}>
                 <input 
                     type="text"
                     className="rounded-md px-2 py-1 mr-[.3rem] text-black"

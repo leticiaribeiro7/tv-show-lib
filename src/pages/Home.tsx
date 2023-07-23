@@ -30,7 +30,7 @@ export default function Home() {
       <p className="text-2xl text-center font-bold mt-6 mb-3">Top Rated Shows</p>
       <div className=" grid grid-cols-2 lg:grid-cols-3 gap-5 p-5 max-w-[80%] m-auto">
         {topShows.length === 0 && <p>Spinner aqui</p> }
-        {topShows && topShows.map((show) => <TvShowCard key={show.id} tvShow={show}/>)}
+        {topShows && topShows.map((show) => <TvShowCard key={show.id} tvShow={show} borderStyle="bg-black"/>)}
       </div>
     </div>
   )
